@@ -46,7 +46,10 @@ drawUser()
 
 document.addEventListener('keydown', moveUser)
 
-DeviceOrientationEvent.requestPermission()
+
+
+if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    DeviceOrientationEvent.requestPermission()
 .then(response => {
   if (response == 'granted') {
     window.addEventListener('deviceorientation', (e) => {
@@ -55,6 +58,7 @@ DeviceOrientationEvent.requestPermission()
   }
 })
 .catch(alert("nay :("))
+  }
 
 function drawUser(){
     user.style.left = userCurrentPosition[0] + 'px'
