@@ -71,15 +71,20 @@ function moveUser(e){
     drawUser()
 }
 
+function updateFieldIfNotNull(fieldName, value, precision=2){
+    if (value != null)
+      document.getElementById(fieldName).innerHTML = value.toFixed(precision);
+  }
 
 function handleOrientation(event) {
-    if(e.beta.toFixed(2) > 10){
+    updateFieldIfNotNull('Orientation_g', event.gamma);
+    if(event.gamma.toFixed(2) > 10){
 
         if(userCurrentPosition[0] > 0){
             userCurrentPosition[0] -= 20
         }
     }
-    if(e.beta.toFixed(2) < -10){
+    if(event.gamna.toFixed(2) < -10){
         if(userCurrentPosition[0] < effectiveWidth){
             userCurrentPosition[0] += 20
         }
