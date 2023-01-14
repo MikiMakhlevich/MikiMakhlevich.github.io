@@ -45,7 +45,16 @@ grid.appendChild(user)
 drawUser()
 
 document.addEventListener('keydown', moveUser)
-window.addEventListener('deviceorientation',handleOrientation)
+
+DeviceOrientationEvent.requestPermission()
+.then(response => {
+  if (response == 'granted') {
+    window.addEventListener('deviceorientation', (e) => {
+      alert("yay")
+    })
+  }
+})
+.catch(alert("nay :("))
 
 function drawUser(){
     user.style.left = userCurrentPosition[0] + 'px'
