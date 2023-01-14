@@ -54,14 +54,15 @@ function drawUser(){
 
 
 function doOnOrientationChange() {
-    switch(window.orientation) {  
-      case -90: case 90:
-        alert('landscape');
-        break; 
-      default:
-        alert('portrait');
-        break; 
-    }
+    // switch(window.orientation) {  
+    //   case -90: case 90:
+    //     alert('landscape');
+    //     break; 
+    //   default:
+    //     alert('portrait');
+    //     break; 
+    // }
+    alert(window.orientation)
 }
   
 window.addEventListener('orientationchange', doOnOrientationChange);
