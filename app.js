@@ -73,9 +73,20 @@ function moveUser(e){
 
 
 function handleOrientation(event) {
-    updateFieldIfNotNull('Orientation_a', event.alpha, 2);
-    updateFieldIfNotNull('Orientation_b', event.beta, 2);
-    updateFieldIfNotNull('Orientation_g', event.gamma, 2);
+    if(e.beta.toFixed(2) > 10){
+
+        if(userCurrentPosition[0] > 0){
+            userCurrentPosition[0] -= 20
+        }
+    }
+    if(e.beta.toFixed(2) < -10){
+        if(userCurrentPosition[0] < effectiveWidth){
+            userCurrentPosition[0] += 20
+        }
+
+    }
+
+    drawUser()
   }
 
 function updateFieldIfNotNull(fieldName, value, precision=10){
@@ -83,16 +94,12 @@ if (value != null)
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
-  // Request permission for iOS 13+ devices
-  if (DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function") {
+if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
     DeviceMotionEvent.requestPermission();
   }
-
-
-
-
-
 
 const ball = document.createElement('div')
 ball.classList.add('ball')
@@ -140,18 +147,6 @@ function ballMovment(){
             //blocks[blocks.indexOf(element)].classList.remove('block')
             blocks.splice(blocks.indexOf(element),1)
         }
-
-        // if(element.bottomLeft[1] < parseInt(getComputedStyle(ball).bottom) && element.topRight[1] > parseInt(getComputedStyle(ball).bottom)+10
-        // && (parseInt(getComputedStyle(ball).left) + 10 > element.bottomLeft[0] || parseInt(getComputedStyle(ball).left) < element.topRight[0]))
-        // {
-        //     hDirection = -1*hDirection
-        //     //console.log(blocks.indexOf(element))
-        //     Array.from(document.querySelectorAll('.block'))[blocks.indexOf(element)].classList.remove('block')
-
-        //     //blocks[blocks.indexOf(element)].classList.remove('block')
-        //     blocks.splice(blocks.indexOf(element),1)
-        // }  
-
     });
 
 
