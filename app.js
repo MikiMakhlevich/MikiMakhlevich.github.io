@@ -53,7 +53,7 @@ function drawUser(){
 }
 
 
-function doOnOrientationChange() {
+function doOnOrientationChange(e) {
     // switch(window.orientation) {  
     //   case -90: case 90:
     //     alert('landscape');
@@ -62,7 +62,7 @@ function doOnOrientationChange() {
     //     alert('portrait');
     //     break; 
     // }
-    alert(window.orientation)
+    alert(e.gamma)
 }
   
 window.addEventListener('orientationchange', doOnOrientationChange);
