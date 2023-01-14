@@ -85,15 +85,15 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_g', event.gamma);
-    if(parseFloat(event.gamma)  > 10.0){
+    if(parseInt(event.gamma)  > 10){
 
         if(userCurrentPosition[0] > 0){
-            userCurrentPosition[0] -= 20
+            userCurrentPosition[0] += 2
         }
     }
-    if(parseFloat(event.gamma) < -10.0){
+    if(parseInt(event.gamma) < -10){
         if(userCurrentPosition[0] < effectiveWidth){
-            userCurrentPosition[0] += 20
+            userCurrentPosition[0] -= 2
         }
     }
 
