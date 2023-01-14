@@ -45,7 +45,7 @@ grid.appendChild(user)
 drawUser()
 
 document.addEventListener('keydown', moveUser)
-window.addEventListener('deviceorientation', handleOrientation)
+window.addEventListener("deviceorientation", handleOrientation);
 
 function drawUser(){
     user.style.left = userCurrentPosition[0] + 'px'
@@ -88,22 +88,28 @@ function moveUser(e){
     drawUser()
 }
 
-function handleOrientation(event){
-    const absolute = event.absolute;
-    const alpha = event.alpha;
-    const beta = event.beta;
-    const gamma = event.gamma;
 
-    alert('hey')
-  
-    if(gamma > 30){
-        userCurrentPosition[0] -= 20
-    } else if (gamma<-30){
-        userCurrentPosition[0] += 20
-    }
+function handleOrientation(event) {
+    updateFieldIfNotNull('Orientation_a', event.alpha, 2);
+    updateFieldIfNotNull('Orientation_b', event.beta, 2);
+    updateFieldIfNotNull('Orientation_g', event.gamma, 2);
+  }
 
-
+function updateFieldIfNotNull(fieldName, value, precision=10){
+if (value != null)
+    document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
+
+  // Request permission for iOS 13+ devices
+  if (DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function") {
+    DeviceMotionEvent.requestPermission();
+  }
+
+
+
+
+
 
 const ball = document.createElement('div')
 ball.classList.add('ball')
