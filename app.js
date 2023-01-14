@@ -44,6 +44,13 @@ user.classList.add('user')
 grid.appendChild(user)
 drawUser()
 
+if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    DeviceMotionEvent.requestPermission();
+  }
+
 document.addEventListener('keydown', moveUser)
 window.addEventListener("deviceorientation", handleOrientation);
 
@@ -78,17 +85,16 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_g', event.gamma);
-    if(event.gamma.toFixed(2) > 10){
+    if(event.gamma > 10){
 
         if(userCurrentPosition[0] > 0){
             userCurrentPosition[0] -= 20
         }
     }
-    if(event.gamna.toFixed(2) < -10){
+    if(event.gamma < -10){
         if(userCurrentPosition[0] < effectiveWidth){
             userCurrentPosition[0] += 20
         }
-
     }
 
     drawUser()
@@ -99,12 +105,6 @@ if (value != null)
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
-if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    DeviceMotionEvent.requestPermission();
-  }
 
 const ball = document.createElement('div')
 ball.classList.add('ball')
