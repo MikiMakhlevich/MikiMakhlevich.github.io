@@ -62,7 +62,7 @@ function doOnOrientationChange(e) {
     //     alert('portrait');
     //     break; 
     // }
-    alert(e.gamma)
+    alert(window.gamma)
 }
   
 window.addEventListener('orientationchange', doOnOrientationChange);
