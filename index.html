@@ -64,7 +64,7 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 
 let is_running = false;
 let demo_button = document.getElementById("start_demo");
-demo_button.onclick = function(e) {
+//demo_button.onclick = function(e) {
   e.preventDefault();
   
   // Request permission for iOS 13+ devices
@@ -88,9 +88,9 @@ demo_button.onclick = function(e) {
     document.getElementById("start_demo").innerHTML = "Stop demo";
     demo_button.classList.remove('btn-success');
     demo_button.classList.add('btn-danger');
-    is_running = true;
+    //is_running = true;
   }
-};
+//};
 
 
 /*
