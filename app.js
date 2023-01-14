@@ -75,6 +75,8 @@ function handleOrientation(event){
     const alpha = event.alpha;
     const beta = event.beta;
     const gamma = event.gamma;
+
+    alert('hey')
   
     if(gamma > 30){
         userCurrentPosition[0] -= 20
@@ -149,8 +151,8 @@ function ballMovment(){
 
     if(parseInt(getComputedStyle(ball).bottom)<0)
     {
-        alert('you lose')
-        clearInterval(gameLoop)
+        //alert('you lose')
+        //clearInterval(gameLoop)
     } 
 
     if(blocks.length == 0){
