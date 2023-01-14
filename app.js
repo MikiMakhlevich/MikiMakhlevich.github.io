@@ -84,7 +84,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }
 
 function handleOrientation(event) {
-    updateFieldIfNotNull('Orientation_g', event.gamma);
+    updateFieldIfNotNull('Orientation_g', event.alpha);
 
     // if(parseInt(event.gamma)  > 10){
     //     userCurrentPosition[0] += 2   
@@ -94,7 +94,7 @@ function handleOrientation(event) {
     //         userCurrentPosition[0] -= 2
     // }
 
-    userCurrentPosition[0] += Math.sin(event.gamma)*4
+    userCurrentPosition[0] += Math.sin(event.alpha)*4
 
     drawUser()
   }
