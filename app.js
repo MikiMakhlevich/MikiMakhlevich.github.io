@@ -45,6 +45,7 @@ grid.appendChild(user)
 drawUser()
 
 document.addEventListener('keydown', moveUser)
+window.addEventListener('deviceorientation',handleOrientation)
 
 function drawUser(){
     user.style.left = userCurrentPosition[0] + 'px'
@@ -67,6 +68,21 @@ function moveUser(e){
     }
 
     drawUser()
+}
+
+function handleOrientation(event){
+    const absolute = event.absolute;
+    const alpha = event.alpha;
+    const beta = event.beta;
+    const gamma = event.gamma;
+  
+    if(gamma > 30){
+        userCurrentPosition[0] -= 20
+    } else if (gamma<-30){
+        userCurrentPosition[0] += 20
+    }
+
+
 }
 
 const ball = document.createElement('div')
@@ -106,7 +122,7 @@ function ballMovment(){
     
     blocks.forEach(element => {
         if(element.bottomLeft[0] < parseInt(getComputedStyle(ball).left) && element.topRight[0] > parseInt(getComputedStyle(ball).left)+10
-        && ((parseInt(getComputedStyle(ball).bottom) < element.topRight[1] && (parseInt(getComputedStyle(ball).bottom) > element.bottomRight[1]) || (parseInt(getComputedStyle(ball).bottom) + 10 > element.bottomLeft[1] && parseInt(getComputedStyle(ball).bottom) + 10 < element.topLeft[1]))))
+        && ((parseInt(getComputedStyle(ball).bottom) < element.topRight[1] && (parseInt(getComputedStyle(ball).bottom) > element.bottomRight[1]) || (parseInt(getComputedStyle(ball).bottom) + 10 > element.bottomLeft[1] && parseInt(getComputedStyle(ball).bottom) + 10 < element.topLeft[1]))    ))
         {
             vDirection = -1*vDirection
             //console.log(blocks.indexOf(element))
